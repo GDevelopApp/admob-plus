@@ -7,7 +7,7 @@
   "dependencies": {
     "@frat/envinfo": "^7.10.1",
     "@inquirer/prompts": "^4.3.2",
-    "admob-plus-cordova": "workspace:*",
+    "gdevelop-cordova-admob-plus": "workspace:*",
     "cli-table3": "^0.6.5",
     "clipboardy": "^4.0.0",
     "cordova-common": "^5.0.0",

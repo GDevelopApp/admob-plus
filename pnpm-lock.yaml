@@ -882,9 +882,6 @@ importers:
       '@inquirer/prompts':
         specifier: ^4.3.2
         version: 4.3.3
-      admob-plus-cordova:
-        specifier: workspace:*
-        version: link:../cordova
       cli-table3:
         specifier: ^0.6.5
         version: 0.6.5
@@ -912,6 +909,9 @@ importers:
       fs-extra:
         specifier: ^11.2.0
         version: 11.3.0
+      gdevelop-cordova-admob-plus:
+        specifier: workspace:*
+        version: link:../cordova
       got:
         specifier: ^13.0.0
         version: 13.0.0
@@ -1055,6 +1055,10 @@ importers:
         version: 0.9.4(enquirer@2.4.1)
 
   packages/ionic:
+    dependencies:
+      admob-plus-cordova:
+        specifier: '>=1.0.0'
+        version: 1.28.0
     devDependencies:
       '@angular/core':
         specifier: ~17.2.3
@@ -1068,9 +1072,6 @@ importers:
       '@types/node':
         specifier: ^22.13.14
         version: 22.14.1
-      admob-plus-cordova:
-        specifier: workspace:*
-        version: link:../cordova
       del:
         specifier: ^6.1.1
         version: 6.1.1
@@ -1080,6 +1081,9 @@ importers:
       fs-extra:
         specifier: ^11.2.0
         version: 11.3.0
+      gdevelop-cordova-admob-plus:
+        specifier: workspace:*
+        version: link:../cordova
       rxjs:
         specifier: ^7.8.1
         version: 7.8.2
@@ -6776,6 +6780,9 @@ packages:
   adm-zip@0.5.16:
     resolution: {integrity: sha512-TGw5yVi4saajsSEgz25grObGHEUaDrniwvA2qwSC060KfqGPdglhvPMA2lPIoxs3PQIItj2iag35fONcQqgUaQ==}
     engines: {node: '>=12.0'}
+
+  admob-plus-cordova@1.28.0:
+    resolution: {integrity: sha512-6VRF80XN/4pkJ4ATVd0FXJZYAmrWynbgBBqmZed9dPncskaGgVd+fTr+pltHuKU9oF9zmXofJb7u17L2U0pT6Q==}
 
   admob-plus-cordova@2.0.0-alpha.19:
     resolution: {integrity: sha512-PIC/sVzN74xU6b9O4JmkKYwLxOPH5Fw0D0hCrZDw+6PIoFKXxkikvT1X6ck8kyR3kg0FYmagGnRX7vUbH0eL0w==}
@@ -29556,13 +29563,19 @@ snapshots:
 
   adm-zip@0.5.16: {}
 
+  admob-plus-cordova@1.28.0:
+    dependencies:
+      fast-glob: 3.3.3
+      fs-extra: 10.1.0
+      plist: 3.1.0
+      replace-in-file: 6.3.5
+
   admob-plus-cordova@2.0.0-alpha.19: {}
 
   admob-plus@file:packages/cli:
     dependencies:
       '@frat/envinfo': 7.10.1
       '@inquirer/prompts': 4.3.3
-      admob-plus-cordova: link:packages/cordova
       cli-table3: 0.6.5
       clipboardy: 4.0.0
       cordova-common: 5.0.1
@@ -29572,6 +29585,7 @@ snapshots:
       execa: 8.0.1
       fast-glob: 3.3.3
       fs-extra: 11.3.0
+      gdevelop-cordova-admob-plus: link:packages/cordova
       got: 13.0.0
       js-yaml: 4.1.0
       kleur: 4.1.5
