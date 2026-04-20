@@ -1,5 +1,5 @@
 {
-  "name": "admob-plus-cordova",
+  "name": "gdevelop-cordova-admob-plus",
   "version": "2.0.0-alpha.19",
   "description": "Trustable Google AdMob Cordova Plugin, successor of cordova-plugin-admob-free. Unlike some Cordova AdMob plugins, no ad-sharing, free to use. TypeScript friendly. Compatible with Ionic. admob-plus-cordova is one of the most popular Cordova AdMob plugins.",
   "main": "lib/index.js",

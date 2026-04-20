@@ -1,5 +1,5 @@
 {
-  "name": "cordova-plugin-consent",
+  "name": "gdevelop-cordova-plugin-consent",
   "version": "3.0.0-alpha.9",
   "description": "Google Consent SDK Cordova Plugin",
   "main": "./lib/index.js",
