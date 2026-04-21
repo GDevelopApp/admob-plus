@@ -15,7 +15,7 @@ class AMBInterstitial: AMBAdBase, FullScreenContentDelegate {
         clear()
 
         InterstitialAd.load(
-            withAdUnitID: adUnitId,
+            with: adUnitId,
             request: adRequest,
             completionHandler: { ad, error in
                 if error != nil {
@@ -34,7 +34,7 @@ class AMBInterstitial: AMBAdBase, FullScreenContentDelegate {
     }
 
     override func show(_ ctx: AMBContext) {
-        mAd?.present(fromRootViewController: plugin.viewController)
+        mAd?.present(from: plugin.viewController)
         ctx.resolve()
     }
 

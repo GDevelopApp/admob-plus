@@ -28,7 +28,7 @@ class AMBAppOpenAd: AMBAdBase, FullScreenContentDelegate {
         clear()
 
         AppOpenAd.load(
-            withAdUnitID: self.adUnitId,
+            with: self.adUnitId,
             request: adRequest,
             completionHandler: { (ad, error) in
                 if error != nil {
@@ -45,7 +45,7 @@ class AMBAppOpenAd: AMBAdBase, FullScreenContentDelegate {
     }
 
     override func show(_ ctx: AMBContext) {
-        mAd?.present(fromRootViewController: AMBContext.plugin.viewController)
+        mAd?.present(from: AMBContext.plugin.viewController)
     }
 
     func adDidRecordImpression(_ ad: FullScreenPresentingAd) {

@@ -14,7 +14,7 @@ class AMBRewarded: AMBAdBase, FullScreenContentDelegate {
     override func load(_ ctx: AMBContext) {
         clear()
 
-        RewardedAd.load(withAdUnitID: adUnitId, request: adRequest, completionHandler: { ad, error in
+        RewardedAd.load(with: adUnitId, request: adRequest, completionHandler: { ad, error in
             if error != nil {
                 self.emit(AMBEvents.adLoadFail, error!)
 
@@ -33,7 +33,7 @@ class AMBRewarded: AMBAdBase, FullScreenContentDelegate {
     }
 
     override func show(_ ctx: AMBContext) {
-        mAd?.present(fromRootViewController: plugin.viewController, userDidEarnRewardHandler: {
+        mAd?.present(from: plugin.viewController, userDidEarnRewardHandler: {
             let reward = self.mAd!.adReward
             self.emit(AMBEvents.adReward, reward)
         })
