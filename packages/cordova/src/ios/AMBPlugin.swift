@@ -59,7 +59,7 @@ class AMBPlugin: CDVPlugin {
     @objc func start(_ command: CDVInvokedUrlCommand) {
         let ctx = AMBContext(command)
         MobileAds.shared.start(completionHandler: { _ in
-            ctx.resolve(["version": GADGetStringFromVersionNumber(MobileAds.shared.versionNumber)])
+            ctx.resolve(["version": string(for: MobileAds.shared.versionNumber)])
         })
     }
 
@@ -67,7 +67,7 @@ class AMBPlugin: CDVPlugin {
         let ctx = AMBContext(command)
 
         if let muted = ctx.opt0() as? Bool {
-            MobileAds.shared.applicationMuted = muted
+            MobileAds.shared.isApplicationMuted = muted
             ctx.resolve()
         } else {
             ctx.reject()

@@ -168,7 +168,7 @@ extension AMBCoreContext {
 
     func configure() {
         if let muted = optAppMuted() {
-            MobileAds.shared.applicationMuted = muted
+            MobileAds.shared.isApplicationMuted = muted
         }
         if let volume = optAppVolume() {
             MobileAds.shared.applicationVolume = volume
