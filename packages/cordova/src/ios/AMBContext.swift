@@ -152,7 +152,7 @@ class AMBContext: AMBCoreContext {
 
         let options = ServerSideVerificationOptions.init()
         if let customData = ssv.value(forKey: "customData") as? String {
-            options.customRewardString = customData
+            options.customRewardText = customData
         }
         if let userId = ssv.value(forKey: "userId") as? String {
             options.userIdentifier = userId
