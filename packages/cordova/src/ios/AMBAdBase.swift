@@ -42,7 +42,7 @@ class AMBAdBase: AMBCoreAd {
         self.emit(eventName, ["message": error.localizedDescription])
     }
 
-    func emit(_ eventName: String, _ reward: GADAdReward) {
+    func emit(_ eventName: String, _ reward: AdReward) {
         self.emit(eventName, [
             "reward": [
                 "amount": reward.amount,
