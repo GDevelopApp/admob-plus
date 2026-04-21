@@ -124,20 +124,20 @@ class AMBContext: AMBCoreContext {
                 }
                 if adaptive == "inline",
                     let maxHeight = adSizeDict["maxHeight"] as? CGFloat {
-                    return InlineAdaptiveBannerAdSizeWithWidthAndMaxHeight(width, maxHeight)
+                    return inlineAdaptiveBanner(width: width, maxHeight: maxHeight)
                 } else {
                     switch adSizeDict["orientation"] as? String {
                     case "portrait":
-                        return PortraitAnchoredAdaptiveBannerAdSizeWithWidth(width)
+                        return portraitAnchoredAdaptiveBanner(width: width)
                     case "landscape":
-                        return LandscapeAnchoredAdaptiveBannerAdSizeWithWidth(width)
+                        return landscapeAnchoredAdaptiveBanner(width: width)
                     default:
-                        return CurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(width)
+                        return currentOrientationAnchoredAdaptiveBanner(width: width)
                     }
                 }
             } else if let width = adSizeDict["width"] as? Int,
                  let height = adSizeDict["height"] as? Int {
-                return AdSizeFromCGSize(CGSize(width: width, height: height))
+                return adSizeFor(cgSize: CGSize(width: width, height: height))
             }
         }
         return AdSizeBanner
