@@ -1,7 +1,7 @@
 import GoogleMobileAds
 
-class AMBRewarded: AMBAdBase, GADFullScreenContentDelegate {
-    var mAd: GADRewardedAd?
+class AMBRewarded: AMBAdBase, FullScreenContentDelegate {
+    var mAd: RewardedAd?
 
     deinit {
         clear()
@@ -14,7 +14,7 @@ class AMBRewarded: AMBAdBase, GADFullScreenContentDelegate {
     override func load(_ ctx: AMBContext) {
         clear()
 
-        GADRewardedAd.load(withAdUnitID: adUnitId, request: adRequest, completionHandler: { ad, error in
+        RewardedAd.load(withAdUnitID: adUnitId, request: adRequest, completionHandler: { ad, error in
             if error != nil {
                 self.emit(AMBEvents.adLoadFail, error!)
 
@@ -24,7 +24,7 @@ class AMBRewarded: AMBAdBase, GADFullScreenContentDelegate {
 
             self.mAd = ad
             ad?.fullScreenContentDelegate = self
-            ad?.serverSideVerificationOptions = ctx.optGADServerSideVerificationOptions()
+            ad?.serverSideVerificationOptions = ctx.optServerSideVerificationOptions()
 
             self.emit(AMBEvents.adLoad)
 
@@ -40,20 +40,20 @@ class AMBRewarded: AMBAdBase, GADFullScreenContentDelegate {
         ctx.resolve()
     }
 
-    func adDidRecordImpression(_ ad: GADFullScreenPresentingAd) {
+    func adDidRecordImpression(_ ad: FullScreenPresentingAd) {
         self.emit(AMBEvents.adImpression)
     }
 
-    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+    func ad(_ ad: FullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
         clear()
         self.emit(AMBEvents.adShowFail, error)
     }
 
-    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+    func adWillPresentFullScreenContent(_ ad: FullScreenPresentingAd) {
         self.emit(AMBEvents.adShow)
     }
 
-    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+    func adDidDismissFullScreenContent(_ ad: FullScreenPresentingAd) {
         clear()
         self.emit(AMBEvents.adDismiss)
     }

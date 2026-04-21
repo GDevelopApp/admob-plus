@@ -107,16 +107,16 @@ extension AMBCoreContext {
         }
     }
 
-    func optMaxAdContentRating() -> GADMaxAdContentRating? {
+    func optMaxAdContentRating() -> MaxAdContentRating? {
         switch optString("maxAdContentRating") {
         case "G":
-            return GADMaxAdContentRating.general
+            return MaxAdContentRating.general
         case "MA":
-            return GADMaxAdContentRating.matureAudience
+            return MaxAdContentRating.matureAudience
         case "PG":
-            return GADMaxAdContentRating.parentalGuidance
+            return MaxAdContentRating.parentalGuidance
         case "T":
-            return GADMaxAdContentRating.teen
+            return MaxAdContentRating.teen
         default:
             return nil
         }
@@ -134,15 +134,15 @@ extension AMBCoreContext {
         return optStringArray("testDeviceIds")
     }
 
-    func optGADRequest() -> GADRequest {
-        let request = GADRequest()
+    func optRequest() -> Request {
+        let request = Request()
         if let contentURL = optString("contentUrl") {
             request.contentURL = contentURL
         }
         if let keywords = optStringArray("keywords") {
             request.keywords = keywords
         }
-        let extras = GADExtras()
+        let extras = Extras()
         if let npa = optString("npa") {
             extras.additionalParameters = ["npa": npa]
         }
@@ -168,13 +168,13 @@ extension AMBCoreContext {
 
     func configure() {
         if let muted = optAppMuted() {
-            GADMobileAds.sharedInstance().applicationMuted = muted
+            MobileAds.shared.applicationMuted = muted
         }
         if let volume = optAppVolume() {
-            GADMobileAds.sharedInstance().applicationVolume = volume
+            MobileAds.shared.applicationVolume = volume
         }
 
-        let requestConfiguration = GADMobileAds.sharedInstance().requestConfiguration
+        let requestConfiguration = MobileAds.shared.requestConfiguration
         if let maxAdContentRating = optMaxAdContentRating() {
             requestConfiguration.maxAdContentRating = maxAdContentRating
         }
@@ -204,9 +204,9 @@ class AMBCoreAd: NSObject {
 
     let id: String
     let adUnitId: String
-    let adRequest: GADRequest
+    let adRequest: Request
 
-    init(id: String, adUnitId: String, adRequest: GADRequest) {
+    init(id: String, adUnitId: String, adRequest: Request) {
         self.id = id
         self.adUnitId = adUnitId
         self.adRequest = adRequest
@@ -222,7 +222,7 @@ class AMBCoreAd: NSObject {
         else {
             return nil
         }
-        self.init(id: id, adUnitId: adUnitId, adRequest: ctx.optGADRequest())
+        self.init(id: id, adUnitId: adUnitId, adRequest: ctx.optRequest())
     }
 
     deinit {
